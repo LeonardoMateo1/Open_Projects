@@ -11,16 +11,16 @@ def index():
     print(users)
     return render_template("index.html", users=users)
 
-@app.route('/login')
+@app.route('/login_register')
 def login():
-    return render_template("login.html")
+    return render_template("log_reg.html")
 
 @app.route('/dashboard')
 def dashboard():
     if 'user_id' not in session:
         return redirect('/logout')
     session['user_id'] = session['user_id']
-    return render_template("dashboard.html", user= session['user_id'])
+    return render_template("dashboard.html", user= session['user_id'], users=User.get_all())
 
 @app.route('/register', methods=["POST"])
 def create_user():
@@ -35,4 +35,17 @@ def create_user():
     session['user_id'] = id
     print(session['user_id'])
 
-    return redirect('/login')
+    return redirect('/dashboard')
+
+@app.route('/login',methods=['POST'])
+def log():
+    user = User.get_by_email(request.form)
+
+    if not user:
+        flash("Invalid Email","login")
+        return redirect('/')
+    if not bcrypt.check_password_hash(user.password, request.form['password']):
+        flash("Invalid Password","login")
+        return redirect('/')
+    session['user_id'] = user.id
+    return redirect('/dashboard')

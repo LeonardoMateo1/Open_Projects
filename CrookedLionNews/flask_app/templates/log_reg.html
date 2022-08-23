@@ -22,16 +22,6 @@
             <div class="content">
                 <h2 class="log-head">Create an account</h2>
                 <form action="/register" method="POST" class="log">
-                    {% with messages = get_flashed_messages(category_filter=['login']) %}
-                        {% if messages %}
-                        <div class="alert alert-danger" role="alert">
-                            <strong>Flash AHHHHHHH!!!!</strong>
-                                {% for message in messages %}
-                                <p>{{message}}</p>
-                                {% endfor %}
-                        </div>
-                        {% endif %}
-                    {% endwith %}
                     <div class="log-li">
                         <label for="first_name"><h5>First Name:</h5></label><br>
                         <input type="text" name="first_name">
@@ -54,6 +44,22 @@
                     </div>
                     <div class="btn-1" method="POST">
                         <input type="submit" value="Register" class="btn">
+                    </div>
+                </form>
+            </div>
+            <div class="content-1">
+                <h2 class="log-head">Login</h2>
+                <form action="/login" method="POST" class="log">
+                    <div class="log-li">
+                        <label for="email"><h5>Email:</h5></label><br>
+                        <input type="text" name="email">
+                    </div>
+                    <div class="log-li">
+                        <label for="password"><h5>Password:</h5></label><br>
+                        <input type="password" name="password">
+                    </div>
+                    <div class="btn-1"  action="/login" method="POST">
+                        <input type="submit" value="Login" class="btn">
                     </div>
                 </form>
             </div>

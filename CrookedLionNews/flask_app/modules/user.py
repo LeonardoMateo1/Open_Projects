@@ -29,6 +29,14 @@ class User:
         # data is a dictionary that will be passed into the save method from server.py
         return connectToMySQL(cls.db).query_db( query, data )
 
+    @classmethod
+    def get_by_email(cls,data):
+        query = "SELECT * FROM users WHERE email = %(email)s;"
+        results = connectToMySQL(cls.db).query_db(query,data)
+        if len(results) < 1:
+            return False
+        return cls(results[0])
+
     @staticmethod
     def validate_register(user):
         is_valid = True
