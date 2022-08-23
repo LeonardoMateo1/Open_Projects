@@ -7,7 +7,9 @@ bcrypt = Bcrypt(app)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    users = User.get_all()
+    print(users)
+    return render_template("index.html", users=users)
 
 @app.route('/login')
 def login():
@@ -18,7 +20,7 @@ def dashboard():
     if 'user_id' not in session:
         return redirect('/logout')
     session['user_id'] = session['user_id']
-    return render_template("index.html", user= session['user_id'])
+    return render_template("dashboard.html", user= session['user_id'])
 
 @app.route('/register', methods=["POST"])
 def create_user():
@@ -33,4 +35,4 @@ def create_user():
     session['user_id'] = id
     print(session['user_id'])
 
-    return redirect('/dashboard')
+    return redirect('/login')

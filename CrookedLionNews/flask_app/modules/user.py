@@ -25,9 +25,9 @@ class User:
 
     @classmethod
     def save(cls, data ):
-        query = "INSERT INTO users ( first_name , last_name , email , created_at, updated_at ) VALUES ( %(first_name)s , %(last_name)s , %(email)s , NOW() , NOW() );"
+        query = "INSERT INTO users ( first_name , last_name , email , password, created_at, updated_at ) VALUES ( %(first_name)s , %(last_name)s , %(email)s , %(password)s, NOW() , NOW() );"
         # data is a dictionary that will be passed into the save method from server.py
-        return connectToMySQL('first_flask').query_db( query, data )
+        return connectToMySQL(cls.db).query_db( query, data )
 
     @staticmethod
     def validate_register(user):
