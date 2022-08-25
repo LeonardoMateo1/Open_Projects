@@ -1,3 +1,4 @@
+from difflib import restore
 from flask_app.config.mysqlconnection import connectToMySQL
 import re	
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
@@ -22,6 +23,16 @@ class User:
         for row in results:
             users.append( cls(row))
         return users
+
+    @classmethod 
+    def get_one(cls,data):
+        query = "Select * FROM users WHERE id = %(id)s;"
+        results = connectToMySQL(cls.db).query_db(query,data)
+        if len(results) < 1:
+            return False 
+        row = results[0]
+        user = cls(row)
+        return user
 
     @classmethod
     def save(cls, data ):

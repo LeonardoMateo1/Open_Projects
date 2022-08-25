@@ -128,3 +128,44 @@
     box-shadow: 5px 5px #000000;
     padding: 0px;
 }
+
+.d-profile ul {
+    list-style: none;
+    display: flex;
+}
+
+.d-profile ul li {
+    position: relative;
+    align-items: center;
+}
+
+.d-profile ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.d-profile ul li a:hover {
+    color: lightgrey;
+}
+
+.dropdown_menu {
+    display: none;
+}
+
+.d-profile ul li:hover .dropdown_menu {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: #1C2833;
+}
+
+.dropdown_menu ul {
+    display: block;
+    margin: 10px;
+}
+
+.dropdown_menu ul li {
+    width: 150px;
+    padding: 10px;
+}
