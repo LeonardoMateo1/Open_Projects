@@ -24,7 +24,7 @@ def dashboard():
     data = {
         "id" : session['user_id']
     }
-    return render_template("dashboard.html", user= session['user_id'], users = User.get_one(data))
+    return render_template("dashboard.html", user= session['user_id'], users = User.get_one(data), articles=Article.get_all())
 
 @app.route('/articles')
 def article():
@@ -42,9 +42,12 @@ def logout():
 def read(id,title):
     data = {
         "id" : id,
-        "title" : title
+        "title" : title,
     }
-    return render_template("read_article.html", article=Article.get_one(data))
+    if 'user_id' not in session:
+        return render_template("read_article.html", article=Article.get_one(data), user=User.get_one(data))
+    session['user_id'] = session['user_id']
+    return render_template("read_article.html", user= session['user_id'], article=Article.get_one(data), users=User.get_one(data))
 
 
 

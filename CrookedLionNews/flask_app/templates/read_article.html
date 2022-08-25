@@ -12,13 +12,13 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1C2833;">
         <header class="container">
-            <a href="" class="navbar-brand mb-0 h1">
+            <a href="/" class="navbar-brand mb-0 h1">
                 <img class="d-line-block mx-2" src="{{url_for('static',filename = 'img/hacking.png')}}" width="70" height="70"> CrookedLion News
             </a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a href="#" class="nav-link active">
+                        <a href="/" class="nav-link active">
                             Home
                         </a>
                     </li>
@@ -52,7 +52,24 @@
         </header>
     </nav>
     <div class="body">
-        <h2>{{article.title}}</h2>
-        <p>{{article.description}}</p>
+        <div class="r-bod">
+            <div class="r-head">
+                <h2>{{article.title}}</h2>
+                <p>By {{user.first_name}} {{user.last_name}}</p>
+            </div>
+            <div class="r-content">
+                <h5>{{article.description}}</h5>
+            </div>
+        </div>
     </div>
+    <footer class="bottom">
+        <div class="bottom-container">
+            <ul class="bottom-ul">
+                <li><h6>@ 2022 The CrookedLion News Company</h6></li>
+                <li>Home</li>
+                <li>Articles</li>
+                <li>About Us</li>
+            </ul>
+        </div>
+    </footer>
 </body>

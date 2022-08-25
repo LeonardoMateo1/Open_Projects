@@ -5,6 +5,16 @@
     font-family: 'Times New Roman', Times, serif;
 }
 
+html{
+    height: 100%;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 .body-heading{
     display: flex;
     align-items: center;
@@ -49,10 +59,10 @@
 }
 
 footer{
-    position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
+    margin-top: auto;
 }
 
 .bottom{
@@ -180,4 +190,13 @@ footer{
 .dropdown_menu ul li {
     width: 150px;
     padding: 10px;
+}
+
+.r-bod {
+    width: 80rem;
+}
+
+.r-head {
+    border-bottom: 2px solid black;
+    margin-top: 5rem;
 }
