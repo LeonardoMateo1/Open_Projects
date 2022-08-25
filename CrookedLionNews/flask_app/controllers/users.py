@@ -38,6 +38,20 @@ def logout():
     session.clear()
     return redirect('/')
 
+@app.route('/articles/<int:id>/<string:title>')
+def read(id,title):
+    data = {
+        "id" : id,
+        "title" : title
+    }
+    return render_template("read_article.html", article=Article.get_one(data))
+
+
+
+
+
+
+
 @app.route('/register', methods=["POST"])
 def create_user():
 

@@ -19,3 +19,14 @@ class Article:
         for row in results:
             articles.append( cls(row))
         return articles
+
+
+    @classmethod 
+    def get_one(cls,data):
+        query = "Select * FROM articles WHERE id = %(id)s;"
+        results = connectToMySQL(cls.db).query_db(query,data)
+        if len(results) < 1:
+            return False 
+        row = results[0]
+        article = cls(row)
+        return article
