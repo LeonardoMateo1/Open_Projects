@@ -46,7 +46,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
 }
 
 .bottom-container{
@@ -54,7 +53,6 @@
     padding-top: 2rem;
     width: 80rem;
     border-bottom: 2px solid #1C2833;
-    position: absolute;
 }
 
 .bottom-ul{
@@ -97,6 +95,13 @@
     border-radius: 20px;
     width: 50rem;
     height: 30rem;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .log-head{

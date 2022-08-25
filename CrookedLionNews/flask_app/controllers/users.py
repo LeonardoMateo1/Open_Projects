@@ -25,6 +25,11 @@ def dashboard():
     }
     return render_template("dashboard.html", user= session['user_id'], users = User.get_one(data))
 
+@app.route('/articles')
+def article():
+    users = User.get_all()
+    print(users)
+    return render_template("articles.html", users=users)
 
 
 @app.route('/logout')
