@@ -1,6 +1,7 @@
 from flask import Flask, render_template, session, redirect, request
 from flask_app import app
 from flask_app.modules.user import User
+from flask_app.modules.article import Article
 from flask import flash
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
@@ -8,8 +9,8 @@ bcrypt = Bcrypt(app)
 @app.route("/")
 def index():
     users = User.get_all()
-    print(users)
-    return render_template("index.html", users=users)
+    articles = Article.get_all()
+    return render_template("index.html", users=users, articles=articles)
 
 @app.route('/login_register')
 def login():

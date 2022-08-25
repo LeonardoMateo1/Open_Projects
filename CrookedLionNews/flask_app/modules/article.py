@@ -10,3 +10,12 @@ class Article:
         self.title = data['title']
         self.description = data['description']
         
+
+    @classmethod
+    def get_all(cls):
+        query = "SELECT * FROM articles;"
+        results = connectToMySQL(cls.db).query_db(query)
+        articles = []
+        for row in results:
+            articles.append( cls(row))
+        return articles
