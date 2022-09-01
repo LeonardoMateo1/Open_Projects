@@ -30,3 +30,14 @@ class Article:
         row = results[0]
         article = cls(row)
         return article
+
+    @classmethod
+    def get_u_one(cls,data):
+        query = "Select * FROM articles WHERE user_id = %(id)s;"
+        results = connectToMySQL(cls.db).query_db(query,data)
+        if len(results) < 1:
+            return False 
+        article = []
+        for row in results:
+            article.append(cls(row))
+        return article

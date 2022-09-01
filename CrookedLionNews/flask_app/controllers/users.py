@@ -36,6 +36,14 @@ def article():
         }
         return render_template("m-articles.html", user= session['user_id'], users = User.get_one(data), articles=Article.get_all())
 
+@app.route('/edit/articles')
+def e_article():
+    data = {
+        "id" : session['user_id']
+    }
+    return render_template("y-articles.html", user= session['user_id'], users = User.get_one(data), articles=Article.get_u_one(data))
+
+
 
 @app.route('/logout')
 def logout():
