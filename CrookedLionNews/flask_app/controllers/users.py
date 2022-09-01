@@ -20,7 +20,6 @@ def login():
 def dashboard():
     if 'user_id' not in session:
         return redirect('/logout')
-    session['user_id'] = session['user_id']
     data = {
         "id" : session['user_id']
     }
@@ -28,9 +27,14 @@ def dashboard():
 
 @app.route('/articles')
 def article():
-    users = User.get_all()
-    print(users)
-    return render_template("articles.html", users=users)
+    if 'user_id' not in session:
+        return render_template("articles.html", articles=Article.get_all())
+    else:
+        session['user_id'] = session['user_id']
+        data = {
+            "id" : session['user_id']
+        }
+        return render_template("m-articles.html", user= session['user_id'], users = User.get_one(data), articles=Article.get_all())
 
 
 @app.route('/logout')
