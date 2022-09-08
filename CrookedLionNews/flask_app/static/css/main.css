@@ -200,3 +200,18 @@ footer{
     border-bottom: 2px solid black;
     margin-top: 5rem;
 }
+
+.y-left-body{
+    flex: 2;
+}
+
+.y-left-body ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+.y-right-body{
+    flex: .7;
+    border-left: 2px solid lightgray;
+    padding-left: 1rem;
+}

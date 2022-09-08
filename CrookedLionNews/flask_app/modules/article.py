@@ -8,6 +8,7 @@ class Article:
     def __init__(self,data):
         self.id = data['id']
         self.title = data['title']
+        self.sum = data['sum']
         self.description = data['description']
         
 
@@ -37,7 +38,7 @@ class Article:
         results = connectToMySQL(cls.db).query_db(query,data)
         if len(results) < 1:
             return False 
-        article = []
+        articles = []
         for row in results:
-            article.append(cls(row))
-        return article
+            articles.append(cls(row))
+        return articles

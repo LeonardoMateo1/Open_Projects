@@ -28,7 +28,7 @@
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a href="/article/create" class="nav-link">
+                        <a href="#" class="nav-link">
                             About Us
                         </a>
                     </li>
@@ -41,6 +41,7 @@
                         <div class="dropdown_menu">
                             <ul>
                                 <li><a href="#">Profile</a></li>
+                                <li><a href="#">Your Articles</a></li>
                                 <li><a href="#">settings</a></li>
                                 <li><a href="/logout">logout</a></li>
                             </ul>
@@ -50,64 +51,5 @@
             </div>
         </header>
     </nav>
-    <div class="body-heading">
-        <div class="body-heading-container">
-            <h1>Your Articles:</h1>
-        </div>
-    </div>
-    <div class="body">
-        <div class="row">
-            <div class="y-left-body">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Updated at</th>
-                            <th>Created at</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for article in articles %}
-                        <tr>
-                            <td>{{article.title}}</td>
-                            <td>{{article.updated_at}}</td>
-                            <td>{{article.created_at}}</td>
-                            <td>
-                                <a href="/article/edit/{{ article.id }}">Edit</a>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-                <ul>
-                {% for article in articles %}
-                    <li class="f-page-article">
-                        <h2>{{article.title}}</h2>
-                        </a>
-                    </li>
-                {% endfor %}
-                </ul>
-            </div>
-            <div class="y-right-body">
-                <ul>
-                    <li class="f-page-article">
-                        <h2>title of article</h2>
-                        <p>where the summary of the article goes</p>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    </div>
-    <footer class="bottom">
-        <div class="bottom-container">
-            <ul class="bottom-ul">
-                <li><h6>@ 2022 The CrookedLion News Company</h6></li>
-                <li>Home</li>
-                <li>Articles</li>
-                <li>About Us</li>
-            </ul>
-        </div>
-    </footer>
+    
 </body>
