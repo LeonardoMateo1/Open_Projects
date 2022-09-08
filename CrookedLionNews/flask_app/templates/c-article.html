@@ -55,21 +55,21 @@
         <div class="content-area">
             <div class="content">
                 <h2 class="log-head">Create an Article</h2>
-                <form action="/register" method="POST" class="log">
+                <form action="/c/art" method="POST" class="log">
                     <div class="log-li">
                         <label for="title"><h5>Title:</h5></label><br>
                         <input type="text" name="title">
                     </div>
                     <div class="log-li">
                         <label for="sum"><h5>Summary:</h5></label><br>
-                        <textarea name="sum" id="sum" cols="50" rows="4"></textarea>
+                        <textarea name="sum" id="sum" cols="30" rows="5"></textarea>
                     </div>
                     <div class="log-li">
                         <label for="description"><h5>Description:</h5></label><br>
-                        <input type="text" name="description">
+                        <textarea name="description" id="description" cols="30" rows="5"></textarea>
                     </div>
                     <div class="btn-1" method="POST">
-                        <input type="submit" value="Register" class="btn">
+                        <input type="submit" value="Post" class="btn">
                     </div>
                 </form>
             </div>

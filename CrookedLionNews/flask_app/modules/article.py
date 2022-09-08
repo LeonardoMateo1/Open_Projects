@@ -42,3 +42,8 @@ class Article:
         for row in results:
             articles.append(cls(row))
         return articles
+
+    @classmethod
+    def save(cls,data):
+        query = "INSERT INTO articles ( title, sum, description, created_at, updated_at, user_id ) VALUES (%(title)s, %(sum)s, %(description)s, NOW(), NOW(), %(user_id)s);"
+        return connectToMySQL(cls.db).query_db( query, data )
