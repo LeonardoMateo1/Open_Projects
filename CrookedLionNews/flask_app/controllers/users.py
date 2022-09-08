@@ -36,6 +36,15 @@ def article():
         }
         return render_template("m-articles.html", user= session['user_id'], users = User.get_one(data), articles=Article.get_all())
 
+@app.route('/article/create')
+def c_article():
+    if 'user_id' not in session:
+        return redirect('/logout')
+    data = {
+            "id" : session['user_id']
+        }
+    return render_template("c-article.html",user= session['user_id'], users = User.get_one(data))
+
 @app.route('/edit/articles')
 def e_article():
     data = {
@@ -43,7 +52,12 @@ def e_article():
     }
     return render_template("y-articles.html", user= session['user_id'], users = User.get_one(data), articles=Article.get_u_one(data))
 
-
+@app.route('/article/edit/<int:id>')
+def edit(id):
+    data = {
+        "id" : id
+    }
+    return
 
 @app.route('/logout')
 def logout():
