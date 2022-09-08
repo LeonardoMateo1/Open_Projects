@@ -186,8 +186,9 @@ footer{
 
 .alert {
     padding: 20px;
-    color: white;
+    color: red;
     margin-bottom: 10px;
+    padding-left: 15rem;
 }
 
 .d-profile ul {
