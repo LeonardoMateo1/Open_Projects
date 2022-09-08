@@ -1,4 +1,6 @@
+from unittest import result
 from flask_app.config.mysqlconnection import connectToMySQL
+from flask_app.modules import user
 import re	
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 from flask import flash
@@ -10,7 +12,9 @@ class Article:
         self.title = data['title']
         self.sum = data['sum']
         self.description = data['description']
-        
+        self.created_at = data['created_at']
+        self.updated_at = data['updated_at']
+        self.user_id = data['user_id']
 
     @classmethod
     def get_all(cls):
@@ -44,6 +48,7 @@ class Article:
         return articles
 
     @classmethod
-    def save(cls,data):
-        query = "INSERT INTO articles ( title, sum, description, created_at, updated_at, user_id ) VALUES (%(title)s, %(sum)s, %(description)s, NOW(), NOW(), %(user_id)s);"
-        return connectToMySQL(cls.db).query_db( query, data )
+    def create_art(cls,data):
+        query = "INSERT INTO articles ( title, sum, description, user_id) VALUES (%(title)s, %(sum)s, %(description)s, %(id)s);"
+        article = connectToMySQL(cls.db).query_db( query, data )
+        return article

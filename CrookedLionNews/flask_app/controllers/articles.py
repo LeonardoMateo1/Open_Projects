@@ -56,14 +56,13 @@ def read(id,title):
 
 #Post Methods Below ------------------------------------------------------------------------------------------------------
 
-@app.route('/c/art', method=['POST'])
-def c_art():
-    session['user_id'] = ['user_id']
+@app.route('/c/art', methods=['POST'])
+def create_art():
     data = {
-        "title": request.form['title'],
-        "sum": request.form['sum'],
-        "description": request.form['description'],
-        "user_id": request.form['user_id']
+        "id" : session['user_id'],
+        "title" : request.form['title'],
+        "sum" : request.form['sum'],
+        "description" : request.form['description']
     }
-    Article.save(data)
-    return redirect('/article/create')
+    Article.create_art(data)
+    return redirect('/dashboard')
