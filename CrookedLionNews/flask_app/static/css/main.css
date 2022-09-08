@@ -113,9 +113,13 @@ footer{
 
 }
 
-.banner-area{
+.bod-l-r {
+    height: 100%;
     background-color: lightslategray;
-    height: 55rem;
+}
+
+.banner-area{
+    height: 100%;
 }
 
 .content-area{
@@ -135,7 +139,7 @@ footer{
     border: 4px solid black;
     border-radius: 20px;
     width: 50rem;
-    height: 17rem;
+    height: 100%;
 }
 
 .content{
@@ -145,7 +149,7 @@ footer{
     border: 4px solid black;
     border-radius: 20px;
     width: 50rem;
-    height: 30rem;
+    height: 100%;
 }
 
 
@@ -166,6 +170,7 @@ footer{
     display: flex;
     justify-content: center;
     margin-top: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .btn{
@@ -177,6 +182,12 @@ footer{
     font-size: 18px;
     box-shadow: 5px 5px #000000;
     padding: 0px;
+}
+
+.alert {
+    padding: 20px;
+    color: white;
+    margin-bottom: 10px;
 }
 
 .d-profile ul {

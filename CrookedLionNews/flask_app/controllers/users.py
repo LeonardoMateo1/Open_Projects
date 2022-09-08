@@ -83,7 +83,8 @@ def read(id,title):
 
 @app.route('/register', methods=["POST"])
 def create_user():
-
+    if not User.validate_register(request.form):
+        return redirect('/login_register')
     data ={ 
         "first_name": request.form['first_name'],
         "last_name": request.form['last_name'],
@@ -102,9 +103,9 @@ def log():
 
     if not user:
         flash("Invalid Email","login")
-        return redirect('/')
+        return redirect('/login_register')
     if not bcrypt.check_password_hash(user.password, request.form['password']):
         flash("Invalid Password","login")
-        return redirect('/')
+        return redirect('/login_register')
     session['user_id'] = user.id
     return redirect('/dashboard')
