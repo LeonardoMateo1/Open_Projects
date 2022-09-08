@@ -85,6 +85,7 @@ def read(id,title):
 def create_user():
     if not User.validate_register(request.form):
         return redirect('/login_register')
+
     data ={ 
         "first_name": request.form['first_name'],
         "last_name": request.form['last_name'],
