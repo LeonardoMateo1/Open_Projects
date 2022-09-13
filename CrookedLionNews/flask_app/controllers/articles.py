@@ -47,12 +47,14 @@ def logout():
 def read(id,title):
     data = {
         "id" : id,
-        "title" : title,
     }
     if 'user_id' not in session:
         return render_template("read_article.html", article=Article.get_one(data), user=User.get_one(data))
     session['user_id'] = session['user_id']
-    return render_template("read_article.html", user= session['user_id'], article=Article.get_one(data), users=User.get_one(data))
+    use = {
+        "id" : session['user_id']
+    }
+    return render_template("m-read-art.html", user= session['user_id'], article=Article.get_art(data), users=User.get_one(use))
 
 #Post Methods Below ------------------------------------------------------------------------------------------------------
 

@@ -37,6 +37,12 @@ class Article:
         return article
 
     @classmethod
+    def get_art(cls,data):
+        query = "SELECT articles.id, articles.title, articles.description, users.first_name, users.last_name FROM articles, users WHERE articles.id = %(id)s AND users.id = articles.user_id"
+        results = connectToMySQL(cls.db).query_db(query,data)
+        return results
+
+    @classmethod
     def get_u_one(cls,data):
         query = "Select * FROM articles WHERE user_id = %(id)s;"
         results = connectToMySQL(cls.db).query_db(query,data)
