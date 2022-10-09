@@ -53,8 +53,3 @@ class Article:
             articles.append(cls(row))
         return articles
 
-    @classmethod
-    def create_art(cls,data):
-        query = "INSERT INTO articles ( title, sum, description, user_id) VALUES (%(title)s, %(sum)s, %(description)s, %(id)s);"
-        article = connectToMySQL(cls.db).query_db( query, data )
-        return article
